@@ -14,7 +14,6 @@ const DetailsHeader = ({ data, navigation }) => (
         height: '100%'
       }}
     />
-
     <CircleButton
       imgUrl={assets.left}
       handlePress={() => navigation.goBack()}
@@ -49,7 +48,8 @@ const Details = ({ route, navigation }) => {
         paddingVertical: SIZES.font,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)'
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        zIndex: 99
       }}>
         <RectButton
           minWidth={300}
@@ -66,6 +66,15 @@ const Details = ({ route, navigation }) => {
         ListHeaderComponent={() => (
           <React.Fragment>
             <DetailsHeader data={data} navigation={navigation} />
+            <SubInfo/>
+            <View style={{padding: SIZES.font}}>
+              <DetailsDesc data={data}/>
+              {data.bids.length > 0 && (
+                <Text style={{fontSize: SIZES.font, fontFamily: FONTS.semiBold, color: COLORS.primary}}>
+                  Current Bid
+                </Text>
+              )}
+            </View>
           </React.Fragment>
         )}
       />
